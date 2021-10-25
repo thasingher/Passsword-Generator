@@ -9,7 +9,7 @@ var specialCharacters = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", 
 var tracker = 0;
 var storage = [];
 
-// Parameters for Password to identify password length
+// Parameters for password to identify password length - Setting range of 8-128 characters
 function Input() {
   userInput = [];
   passwordLength = parseInt(prompt("How many characters would you like for your password?", "8-128"));
@@ -18,7 +18,7 @@ function Input() {
     alert("Choose password length that is a minimum of 8 characters, but no more than 128");
     return false; 
   }
-  var passwordOutput = NextPrompt(passwordLength)
+  var passwordOutput = NextPrompt(passwordLength) // Assigning passwordOutput as a readable output for the end-user
   console.log(passwordOutput)
   return passwordOutput
 }
@@ -34,7 +34,7 @@ function NextPrompt(lengthPassword) {
   var specials = confirm("Would you like to use special characters?");
 
   console.log(userInput)
-
+// If-statements to validate if character entry is true/not true according to user input
   if (upperCase == true){
     tracker++
     console.log(tracker)
@@ -58,14 +58,14 @@ function NextPrompt(lengthPassword) {
     console.log(tracker)
     userInput = userInput.concat(specialCharacters)
   }
-   console.log(tracker) //5 We want to warn user to choose correct input if they do not enter any characeters
+   console.log(tracker) // We want to warn user to choose correct input if they do not enter any characeters
   if (tracker == 0) {
     alert("You must return and choose a character");
     return false;
 
   }
   var userPassword = "";
-
+// Write Math function to add randomness to the password generation factor
   for (i=0; i<lengthPassword; i++) {
     var charactersChosen = Math.floor(Math.random() * userInput.length);
     userPassword += userInput[charactersChosen];
